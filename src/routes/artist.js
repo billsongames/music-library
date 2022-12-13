@@ -1,8 +1,9 @@
+// src/routes/artist.js
 const express = require('express');
 const artistController = require('../controllers/artist');
 
-const artistRouter = express.Router();
+const router = express.Router();
 
-artistRouter.post('/', artistController);
+router.post('/', artistController.create);
 
-module.exports = artistRouter;
+module.exports = router;
