@@ -1,6 +1,6 @@
-const { expect } = require('chai');
+const {expect} = require('chai');
 const request = require('supertest');
-const db = require('../src/db');
+const db = require('../src/db/index.js');
 const app = require('../src/app');
 
 describe('create artist', () => {
@@ -8,7 +8,8 @@ describe('create artist', () => {
     describe('POST', () => {
       it('creates a new artist in the database', async () => {
         const { status, body } = await request(app).post('/artists').send({
-        })    
+          name: 'Tame Impala',
+          genre: 'rock' })    
 
         expect(status).to.equal(201)
         expect(body.name).to.equal('Tame Impala')

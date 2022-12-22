@@ -1,9 +1,20 @@
-// src/routes/artist.js
 const express = require('express');
 const artistController = require('../controllers/artist');
 
-const router = express.Router();
+const artistRouter = express.Router();
+const albumRouter = express.Router()
 
-router.post('/', artistController.create);
+artistRouter.post('/', artistController.createArtist);
+artistRouter.get('/', artistController.readArtists)
+artistRouter.get('/:id', artistController.readArtistById)
 
-module.exports = router;
+artistRouter.put('/:id', artistController.overwriteArtist)
+
+artistRouter.patch('/:id', artistController.updateArtist)
+
+artistRouter.delete('/:id', artistController.deleteArtist)
+
+
+
+
+module.exports = artistRouter, albumRouter;

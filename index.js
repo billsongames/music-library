@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const app = require('./src/app.js')
 const APP_PORT = process.env.PORT || 4000
 
