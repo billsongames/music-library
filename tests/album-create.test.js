@@ -17,19 +17,19 @@ describe('create album', () => {
   describe('/album', () => {
     describe('POST', () => {
       it('creates a new album in the database', async () => {
-        const { status, body } = await request(app).post('/artists/:id/albums').send({
+        const { status, body } = await request(app).post(`/artists/${artist.id}/albums`).send({
           name: 'Appetite for Destruction',
           year: '1987' })    
 
         expect(status).to.equal(201)
         expect(body.name).to.equal('Appetite for Destruction')
-        expect(body.year).to.equal('1987')
+        expect(body.year).to.equal(1987)
 
         const { rows: [ albumData ] } = await db.query(
           `SELECT * FROM Albums WHERE id = ${body.id}`
         )
         expect(albumData.name).to.equal('Appetite for Destruction')
-        expect(albumData.year).to.equal('1987')
+        expect(albumData.year).to.equal(1987)
       })
   });
 });
